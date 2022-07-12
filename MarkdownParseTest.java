@@ -10,7 +10,7 @@ public class MarkdownParseTest {
 
     @Test
     public void testFile1() throws IOException {
-        String contents= Files.readString(Path.of("./test-file.md"));
+        String contents= Files.readString(Path.of("test-file.md"));
         List<String> expect = List.of("https://something.com", "some-thing.html");
         assertEquals(MarkdownParse.getLinks(contents), expect);
     }
@@ -46,7 +46,7 @@ public class MarkdownParseTest {
     @Test
     public void testSpaceBeforeParen() {
         String contents = "[title]   (should-not-count.com)";
-        List<String> expect = List.of();
+        List<String> expect = List.of("should-not-count.com");
         assertEquals(MarkdownParse.getLinks(contents), expect);
     }
 
